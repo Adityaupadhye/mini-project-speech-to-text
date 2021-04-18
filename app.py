@@ -1,18 +1,17 @@
 from flask import Flask, render_template, request, redirect
 import sounddevice as sd
-from playsound import playsound
-from keras.models import load_model
-# import tensorflow as tf
-# from scipy.io.wavfile import write
-import soundfile as sf
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+from keras.models import load_model
+import soundfile as sf
 import run_model
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET','POST'])
 def index():
-    return render_template('index.html')
+    preds = ''
+    return render_template('index.html', preds=preds)
 
 
 def record():
@@ -47,11 +46,13 @@ def start():
 
 print('line before predict')
 new_model = load_model('saved_models/trained_model.h5')
+print('loaded model')
 
 @app.route('/predict', methods=['GET','POST'])
 def predict():
     preds = run_model.preprocessing(new_model, 'voice/output.wav')
-    return render_template('preds.html', preds=preds)
+    
+    return render_template('index.html', preds='prediction = '+preds)
 
 if __name__ == '__main__':
     app.run(debug=True)

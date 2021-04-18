@@ -1,6 +1,5 @@
 import os
 import librosa
-# import tensorflow as tf
 import numpy as np
 
 classes = ['down', 'no', 'left', 'go', 'off', 'on', 'right', 'stop', 'up', 'yes']
