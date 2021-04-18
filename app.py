@@ -28,7 +28,6 @@ def record():
         print('writing 1st time')
     sf.write('voice/output.wav', myrecording, sr)
     return True
-    # write('voice/output.wav', sr, myrecording)  # Save as WAV file 
 
 def play():
     print('playing')
@@ -36,7 +35,6 @@ def play():
     sd.play(data, fs)
     status = sd.wait()
     print(status)
-    # playsound('voice/output.wav')
 
 @app.route('/start', methods=['GET','POST'])
 def start():
@@ -44,7 +42,6 @@ def start():
     play()
     return redirect('/')
 
-print('line before predict')
 new_model = load_model('saved_models/trained_model.h5')
 print('loaded model')
 
