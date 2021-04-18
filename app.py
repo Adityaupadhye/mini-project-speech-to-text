@@ -1,10 +1,8 @@
 from flask import Flask, render_template, request, redirect
 import sounddevice as sd
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-from keras.models import load_model
 import soundfile as sf
-import run_model
+import os
+import model_run
 
 app = Flask(__name__)
 
@@ -29,6 +27,7 @@ def record():
     sf.write('voice/output.wav', myrecording, sr)
     return True
 
+
 def play():
     print('playing')
     data, fs = sf.read('voice/output.wav')
@@ -36,18 +35,17 @@ def play():
     status = sd.wait()
     print(status)
 
+
 @app.route('/start', methods=['GET','POST'])
 def start():
     print(record()) 
     play()
     return redirect('/')
 
-new_model = load_model('saved_models/trained_model.h5')
-print('loaded model')
 
 @app.route('/predict', methods=['GET','POST'])
 def predict():
-    preds = run_model.preprocessing(new_model, 'voice/output.wav')
+    preds = model_run.run_model()
     
     return render_template('index.html', preds='prediction = '+preds)
 
