@@ -2,3 +2,4 @@ libasound-dev
 libportaudio2
 libportaudiocpp0
 python3-pyaudio
+libsndfile1
