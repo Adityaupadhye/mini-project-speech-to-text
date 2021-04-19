@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 # import sounddevice as sd
-import soundfile as sf
+# import soundfile as sf
 import os
 import model_run
 
@@ -30,7 +30,7 @@ def index():
 
 def play():
     print('playing')
-    data, fs = sf.read('output.wav')
+    # data, fs = sf.read('output.wav')
     # sd.play(data, fs)
     # status = sd.wait()
     # print(status)
