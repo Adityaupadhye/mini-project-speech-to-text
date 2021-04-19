@@ -19,18 +19,18 @@ def record():
     myrecording = sd.rec(int(seconds * sr), samplerate=sr, channels=1, blocking=True)
     print('done')
     sd.wait()  # Wait until recording is finished
-    if os.path.exists('voice/output.wav'):
-        os.remove('voice/output.wav')
+    if os.path.exists('output.wav'):
+        os.remove('output.wav')
         print('removed')
     else: 
         print('writing 1st time')
-    sf.write('voice/output.wav', myrecording, sr)
+    sf.write('output.wav', myrecording, sr)
     return True
 
 
 def play():
     print('playing')
-    data, fs = sf.read('voice/output.wav')
+    data, fs = sf.read('output.wav')
     sd.play(data, fs)
     status = sd.wait()
     print(status)
