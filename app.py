@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect
-import sounddevice as sd
+# import sounddevice as sd
 import soundfile as sf
 import os
 import model_run
@@ -12,33 +12,33 @@ def index():
     return render_template('index.html', preds=preds)
 
 
-def record():
-    sr = 16000  # Sample rate
-    seconds = 1  # Duration of recording
-    print('recording')
-    myrecording = sd.rec(int(seconds * sr), samplerate=sr, channels=1, blocking=True)
-    print('done')
-    sd.wait()  # Wait until recording is finished
-    if os.path.exists('output.wav'):
-        os.remove('output.wav')
-        print('removed')
-    else: 
-        print('writing 1st time')
-    sf.write('output.wav', myrecording, sr)
-    return True
+# def record():
+#     sr = 16000  # Sample rate
+#     seconds = 1  # Duration of recording
+#     print('recording')
+#     myrecording = sd.rec(int(seconds * sr), samplerate=sr, channels=1, blocking=True)
+#     print('done')
+#     sd.wait()  # Wait until recording is finished
+#     if os.path.exists('output.wav'):
+#         os.remove('output.wav')
+#         print('removed')
+#     else: 
+#         print('writing 1st time')
+#     sf.write('output.wav', myrecording, sr)
+#     return True
 
 
 def play():
     print('playing')
     data, fs = sf.read('output.wav')
-    sd.play(data, fs)
-    status = sd.wait()
-    print(status)
+    # sd.play(data, fs)
+    # status = sd.wait()
+    # print(status)
 
 
 @app.route('/start', methods=['GET','POST'])
 def start():
-    print(record()) 
+    # print(record()) 
     play()
     return redirect('/')
 
