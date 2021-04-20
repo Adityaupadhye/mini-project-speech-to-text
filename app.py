@@ -5,8 +5,9 @@ import os
 import onnxruntime as ort
 import librosa
 
-app = Flask(__name__)
-classes = ['down', 'no', 'left', 'go', 'off', 'on', 'right', 'stop', 'up', 'yes']
+application = Flask(__name__)
+app = application
+classes = ['down', 'no', 'left', 'go', 'off', 'on', 'right', 'stop' , 'up', 'yes']
 
 @app.route('/', methods=['GET','POST'])
 def index():

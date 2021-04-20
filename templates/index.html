@@ -19,17 +19,22 @@
 </head>
 <body class="bg-dark">
     <div class="container text-center text-white">
-        <div class="row">
-            <div class="col mt-5 fs-5 text-uppercase">
-                ["yes", "no", "up", "down", "left", "right", "on", "off", "stop", "go"]
+        <div class="row mt-1">
+            <div class="col fs-5 text-uppercase">
+                <p>Record an audio clip by speaking any of these words. <br>
+                    Then press Predict to see the prediction
+                </p>
+                <p>
+                    ["yes", "no", "up", "down", "left", "right", "on", "off", "stop", "go"]
+                </p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <form action="/start" method="POST" class="text-center mt-5">
+                <form action="/start" method="POST" class="mt-5">
                     <button class="btn btn-primary text-uppercase" type="submit">start recording</button>
                 </form>
-                <form action="/predict" method="post" class="mt-3 text-center">
+                <form action="/predict" method="post" class="mt-3">
                     <button class="btn btn-danger text-uppercase" type="submit">Predict</button>
                 </form>
             </div>
