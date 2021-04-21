@@ -4,8 +4,8 @@
 block_cipher = None
 
 
-a = Analysis(['gui.py'],
-             pathex=['env/Lib/site-packages', 'E:\\TYEE\\speech-to-text'],
+a = Analysis(['application.py'],
+             pathex=['E:\\TYEE\\speech-to-text'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -22,7 +22,7 @@ exe = EXE(pyz,
           a.scripts,
           [],
           exclude_binaries=True,
-          name='gui',
+          name='speech to text',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -35,4 +35,4 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                upx_exclude=[],
-               name='gui')
+               name='speech to text')
