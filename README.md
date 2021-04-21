@@ -1,7 +1,7 @@
-# mini-project-speech-to-text
+# Mini-Project Speech-to-Text
 
 A Desktop speech recognition app made with Flask.
-Model trinaed on the tensorflow speech reocgnition challenge dataset.
+<br>ML Model trained on the <a href="https://www.kaggle.com/c/tensorflow-speech-recognition-challenge/data">tensorflow speech reocgnition challenge dataset</a>.
 
 ## Download the app
 ### For Windows
